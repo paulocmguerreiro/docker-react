@@ -10,3 +10,20 @@ before_install:
 # RUN THE TEST
 script:
     - docker run -e CI=true paulocmguerreiro/docker-react npm run test
+
+# DEPLOY (aws)
+#deploy:
+#    edge: true
+#    provider: elasticbeanstalk
+#    region: "us-west-2"
+#    app: "docker-react"
+#    env: "Docker-env"
+#    bucket_name: "elasticbeanstalk........."
+#    bucket_path: "docker-react"
+#    # só faz o deploy quando as alteraçoes chegarem ao master
+#    on: 
+#        branch: master
+#        # Chaves defininas no ambientes (no próprio travis)
+#        access_ley_id: $(AWS_ACCESS_KEY)
+#        secret_access_key:
+#            secure: "$(AWS_SECRET_KEY)"""

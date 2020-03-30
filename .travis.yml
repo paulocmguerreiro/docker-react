@@ -1,0 +1,12 @@
+# root access
+sudo: required
+# we need docker
+services:
+    - docker
+# before the test run
+before_install:
+    - docker build -t paulocmguerreiro/docker-react -f Dockerfile.dev .
+
+# RUN THE TEST
+script:
+    - docker run -e CI=true paulocmguerreiro/docker-react npm run test

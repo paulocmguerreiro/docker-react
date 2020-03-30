@@ -1,0 +1,16 @@
+# BUILD : docker build -f Dockerfile.dev .
+# RUN+VOLUMES (ligar app): docker run -it -p 3000:3000 -v "$(pwd)":/app d740ca2c781c
+# RUN+VOLUMES (manter node_modules do docker): docker run -it -p 3000:3000 -v /app/node_modules -v "$(pwd)":/app d740ca2c781c
+# RUN TESTS:    docker build -f Dockerfile.dev .
+#               docker run -it 64b56a0e89ab npm run test 
+
+FROM node:alpine
+
+WORKDIR /app
+
+COPY package.json .
+RUN npm install
+
+COPY . . 
+
+CMD ["npm", "run", "start"]
